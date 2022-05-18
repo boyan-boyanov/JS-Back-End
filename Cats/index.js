@@ -1,11 +1,11 @@
 const express = require('express');
-const { template } = require('./test')
 const addBreed = require('./addBreed')
 const addCat = require('./addCats')
+const editCat = require('./editCat')
 
 const app = express()
 app.use(addCat)
-
+app.use(editCat)
 app.use(addBreed)
 
 
