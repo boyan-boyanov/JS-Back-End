@@ -14,9 +14,7 @@ app.set('views', './src/views') // търси вютата на този път
 
 app.use(routes)
 
-app.get('/create', (req,res)=>{
-    res.render('create')
-})
+
 
 app.get('/details/:id', (req,res)=>{
     res.render('details')
