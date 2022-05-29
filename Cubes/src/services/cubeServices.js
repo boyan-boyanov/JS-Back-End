@@ -10,10 +10,19 @@ exports.save = (cube) => {
     return fs.writeFile(path.resolve('src', 'db.json'), textData, { encoding: "utf-8" })
 }
 
-exports.getOne = (id) =>{
+exports.getOne = (id) => {
     const cube = cubes.filter(x => x.cubeId == id)
-    
+
     return cube[0]
+}
+
+exports.getAll = (search, from, to) => {
+    search = search || "";
+    from = from || 0;
+    to = to || 6;
+    const result = cubes.filter(x => x.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()) && Number(x.difficultyLevel) >= Number(from) && Number(x.difficultyLevel) <= Number(to))
+    
+    return result
 }
 
 
