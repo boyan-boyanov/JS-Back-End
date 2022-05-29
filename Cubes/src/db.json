@@ -40,5 +40,12 @@
         "imageUrl": "https://patilanci-blagoevgrad.com/userfiles/productlargeimages/product_27265.jpg",
         "difficultyLevel": "6",
         "cubeId": "ZRM1XVCGyWfH6EB5yWk24fs9"
+    },
+    {
+        "name": "Strange Cube",
+        "description": "strange new cube with different sizes",
+        "imageUrl": "https://www.game.store.bg/lrgimg/277262/kubche-na-rubik-yuleing-fisher.jpg",
+        "difficultyLevel": "4",
+        "cubeId": "75PpJ8CK0m9IYpPufG5LtySn"
     }
 ]

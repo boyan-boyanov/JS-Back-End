@@ -1,8 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const cubes = require('../db.json')
-const fs = require('fs/promises')
-const path = require('path')
+const cubeServices = require('../services/cubeServices')
 
 router.get('/create', (req, res) => {
     res.render('create')
@@ -17,9 +15,8 @@ router.post("/cubeCreate", (req, res) => {
         return
     } else {
         //saveData
-        cube.cubeId = makeId(24)
-        cubes.push(cube)
-        fs.writeFile(path.resolve('src', 'db.json'), JSON.stringify(cubes, '', 4), { encoding: "utf-8" })
+        
+        cubeServices.save(cube)
             .then(() => {
                 //redirect
                 res.redirect('/')
@@ -28,28 +25,9 @@ router.post("/cubeCreate", (req, res) => {
                 res.status(400)
                 res.send(err)
             })
-
-
-
-
-        console.log(cubes);
-        
     }
 
 
 })
 
 module.exports = router;
-
-
-
-const makeId = (length) => {
-    let result = '';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const charactersLength = characters.length;
-    for (let i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() *
-            charactersLength));
-    }
-    return result;
-}
