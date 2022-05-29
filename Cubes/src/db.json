@@ -22,6 +22,12 @@
         "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/61HpQqVQ37L._SY355_.jpg",
         "difficultyLeve": "3",
         "cubeId": "5c3a68d9f78d6638ec8fdad7"
+    },
+    {
+        "name": "MegaminxEasy",
+        "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/61HpQqVQ37L._SY355_.jpg",
+        "difficultyLeve": "2",
+        "cubeId": "5c3a68d9f78a6638ec1fdad1"
     }
 
 ]

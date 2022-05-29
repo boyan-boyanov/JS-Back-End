@@ -1,20 +1,15 @@
+<main>
+  <h1>Browser</h1>
+  <form action="" method="">
+    <input type="text" class="search" name="search" placeholder="Search...">
+    <input type="number" name="from" class="difficulty" placeholder="Difficulty from...">
+    <span>-</span>
+    <input type="number" name="to" class="difficulty" placeholder="Difficulty to...">
+    <input type="submit" value="search">
+  </form>
+  {{#each cubes}}
+  {{> cube}} <!-- символът ">" вземи от папка partials и името на паршъла cube -->
+  {{/each}}
 
-        <main>
-      <h1>Browser</h1>
-      <form action="" method="">
-        <input type="text" class="search" name="search" placeholder="Search...">
-        <input type="number" name="from" class="difficulty" placeholder="Difficulty from...">
-        <span>-</span>
-        <input type="number" name="to" class="difficulty" placeholder="Difficulty to...">
-        <input type="submit" value="search">
-      </form>           
-            <div class="cube">
-        <img class="cube" src="https://images-na.ssl-images-amazon.com/images/I/61HpQqVQ37L._SY355_.jpg">
-        <p class="name">Megaminx</p>
-        <p><span>Difficulty level:</span> 3</p>
-        <a class="btn" href="/details/5c3a68d9f78d6638ec8fdad7">Details</a>
-      </div>
-
-    </main>
-  </div>
-  
+</main>
+</div>
