@@ -23,8 +23,13 @@ router.post("/cubeCreate", async (req, res) => {
             res.send(err)
         }
     }
+})
 
+router.get('/details/:id', (req, res) => {
 
+    const currentCube = cubeServices.getOne(req.params.id)
+    console.log(currentCube);
+    res.render('details', { currentCube })
 })
 
 module.exports = router;

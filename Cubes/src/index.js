@@ -17,11 +17,6 @@ app.set('views', './src/views') // търси вютата на този път
 
 app.use(routes)
 
-
-app.get('/details/:id', (req,res)=>{
-    res.render('details')
-})
-
 app.get('*', (req,res)=>{
     res.send('404')
 })
