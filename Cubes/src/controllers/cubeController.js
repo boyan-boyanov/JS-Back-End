@@ -6,7 +6,7 @@ router.get('/create', (req, res) => {
     res.render('create')
 })
 
-router.post("/cubeCreate", (req, res) => {
+router.post("/cubeCreate", async (req, res) => {
     const cube = req.body;
     //vaidate
     if (cube.name.length < 2) {
@@ -15,16 +15,13 @@ router.post("/cubeCreate", (req, res) => {
         return
     } else {
         //saveData
-        
-        cubeServices.save(cube)
-            .then(() => {
-                //redirect
-                res.redirect('/')
-            })
-            .catch(err => {
-                res.status(400)
-                res.send(err)
-            })
+        try {
+            await cubeServices.save(cube)
+            res.redirect('/')
+        } catch (err) {
+            res.status(400)
+            res.send(err)
+        }
     }
 
 
