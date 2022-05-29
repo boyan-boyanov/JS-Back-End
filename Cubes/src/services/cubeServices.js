@@ -18,9 +18,9 @@ exports.getOne = (id) => {
 
 exports.getAll = (search, from, to) => {
     search = search || "";
-    from = from || 0;
-    to = to || 6;
-    const result = cubes.filter(x => x.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()) && Number(x.difficultyLevel) >= Number(from) && Number(x.difficultyLevel) <= Number(to))
+    from = Number(from) || 0;
+    to = Number(to) || 6;
+    const result = cubes.filter(x => x.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()) && Number(x.difficultyLevel) >= from && Number(x.difficultyLevel) <= to)
     
     return result
 }
