@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
    
     const cubes = cubeServices.getAll(search, from, to)
    // console.log(cubes);
-    res.render("index", {cubes}) // подаваме данните от cubes за да се рендерират
+    res.render("index", {cubes, search, from, to}) // подаваме данните от cubes за да се рендерират
 })
 
 router.get("/about", (req,res) => {
