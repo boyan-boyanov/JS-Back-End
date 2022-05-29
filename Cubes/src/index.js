@@ -1,7 +1,7 @@
 // стартирай с npm start  - настройка в package.json
 const express = require('express')
 const handlebars = require('express-handlebars')
-
+const routes = require('./routes')
 const app = express()
 
 app.use('/static', express.static("public")) //на всеки рекуест към /static използвай express.static()
@@ -12,20 +12,18 @@ app.set('view engine', 'hbs') // сетни hbs разширение за вси
 app.set('views', './src/views') // търси вютата на този път
 
 
-app.get('/', (req, res) => {
-    res.render("index")
-})
+app.use(routes)
 
 app.get('/create', (req,res)=>{
     res.render('create')
 })
 
-app.get('/about', (req,res)=>{
-    res.render('about')
-})
-
 app.get('/details/:id', (req,res)=>{
     res.render('details')
+})
+
+app.get('/about', (req,res)=>{
+    res.render('about')
 })
 
 app.get('*', (req,res)=>{
