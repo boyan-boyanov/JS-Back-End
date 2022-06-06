@@ -1,5 +1,5 @@
-<<<<<<< HEAD
+
 Test Projects
 =======
-littel projects wit mongodb and express
->>>>>>> 
+Little projects with mongodb and express
+
