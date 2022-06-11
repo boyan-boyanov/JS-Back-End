@@ -1,6 +1,7 @@
 const express = require("express");
 const expressConfig = require('./config/express');
-const router = require("./controllers/auth");
+const routerConfig = require('./config/routes');
+const dataBaseConfig = require('./config/dataBase');
 
 
 start();
@@ -9,8 +10,9 @@ async function start() {
     const app = express();
 
     expressConfig(app);
-
-    app.use(router)
+    await dataBaseConfig(app);
+    routerConfig(app)
+   
     app.get("/", (req,res)=>{
         res.render("home")
     })
