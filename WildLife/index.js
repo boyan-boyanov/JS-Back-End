@@ -1,5 +1,6 @@
 const express = require("express");
 const expressConfig = require('./config/express');
+const router = require("./controllers/auth");
 
 
 start();
@@ -9,6 +10,7 @@ async function start() {
 
     expressConfig(app);
 
+    app.use(router)
     app.get("/", (req,res)=>{
         res.render("home")
     })
