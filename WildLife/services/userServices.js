@@ -40,7 +40,7 @@ async function login(username, password) {
 
 //TODO identify user by identifier
 async function getUserByUsername(username) {
-    const user = await User.find({ username })
+    const user = await User.findOne({ username })
 
     return user
 }
