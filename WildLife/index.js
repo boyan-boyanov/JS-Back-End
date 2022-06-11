@@ -14,6 +14,7 @@ async function start() {
     routerConfig(app)
    
     app.get("/", (req,res)=>{
+        
         res.render("home")
     })
 
