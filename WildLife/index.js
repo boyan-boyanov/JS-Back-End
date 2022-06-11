@@ -13,10 +13,7 @@ async function start() {
     await dataBaseConfig(app);
     routerConfig(app)
    
-    app.get("/", (req,res)=>{
-        
-        res.render("home")
-    })
+    
 
     app.listen(3000, ()=> console.log('Server running on port 3000'));
 }
