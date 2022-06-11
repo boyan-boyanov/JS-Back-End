@@ -27,12 +27,12 @@ async function login(username, password) {
     const user = await getUserByUsername(username);
 
     if (!user) {
-        throw new Error('User doesn\'t exist');
+        throw new Error('Wrong username or password');
     }
 
     const hasMatch = await compare(password, user.hashedPassword);
     if (!hasMatch) {
-        throw new Error('Wrong password');
+        throw new Error('Wrong username or password');
     }
 
     return user;
@@ -40,7 +40,7 @@ async function login(username, password) {
 
 //TODO identify user by identifier
 async function getUserByUsername(username) {
-    const user = await User.findOne({ username })
+    const user = await User.findOne({ username: new RegExp(`^${username}$`, 'i') });
 
     return user
 }
