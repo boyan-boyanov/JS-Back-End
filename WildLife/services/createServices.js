@@ -1,3 +1,4 @@
+
 const Create = require("../models/Create");
 
 
@@ -12,7 +13,14 @@ async function getPosts() {
     return Create.find({});
 }
 
+async function getPostById(id){
+   console.log(Create.findById(id).populate('author', 'firstName', 'lastName'));
+   console.log("here");
+  //  return Create.findById(id).populate('author', 'firstName', 'lastName');
+}
+
 module.exports = {
     createPost,
-    getPosts
+    getPosts,
+    getPostById
 }
