@@ -1,12 +1,17 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types: {ObjectId} } = require('mongoose');
 
-const URL_PATTERN = /^https?:\/\//
+
+const URL_PATTERN = /^https?:\/\/(.+)/
 
 const createSchema = new Schema({
     title: { type: String, minlength: [6, "Title must be at least 6 characters long"] },
     keyword: { type: String, minlength: [6, "Keyword must be at least 6 characters long"] },
     location: { type: String, maxlength: [15, "Location must be at most 15 characters long"] },
-    data: { type: String, minlength: [10, "Data must be in format dd.mm.yyyy"], maxlength: [10, "Data must be in format dd.mm.yyyy"] },
+    date: { 
+        type: String, 
+        minlength: [10, "Data must be in format dd.mm.yyyy"], 
+        maxlength: [10, "Date must be in format dd.mm.yyyy"]
+    },
     image: {
         type: String, validate: {
             validator(value) {
@@ -17,7 +22,7 @@ const createSchema = new Schema({
     },
     description: { type: String, minlength: [8, "Description must be at least 6 characters long"] },
     author: { type: ObjectId, ref: "User", require: true },
-    votes: { type: ObjectId, ref: "User", default: [] },
+    votes: { type: [ObjectId], ref: "User", default: [] },
     rating: { type: Number, default: 0 }
 });
 
