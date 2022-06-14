@@ -1,14 +1,15 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types: { ObjectId } } = require('mongoose');
 
-//TODO change user model according to exam description
-//TODO add validation
+
 const userSchema = new Schema({
-    username: { type: String, required: true },
+    email: { type: String, required: true },
     hashedPassword: { type: String, required: true },
+    gender: { type: String, required: true },
+    trips: { type: [ObjectId], ref: 'Trip', default: [] }
 });
 
-//TODO change index parameter to email if it is written on the exam description
-userSchema.index({ username: 1 }, {
+
+userSchema.index({ email: 1 }, {
     unique: true,
     collation: {
         locale: 'en',

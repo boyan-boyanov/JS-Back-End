@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
-//TODO load all models
+
 require('../models/User');
 
-//TODO change database name
-const dbName = 'skeleton';
+
+const dbName = 'sharetrip';
 const connectionString = `mongodb://localhost:27017/${dbName}`;
 
 module.exports = async (app) => {

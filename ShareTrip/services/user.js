@@ -1,18 +1,19 @@
 const User = require('../models/User');
 const { hash, compare } = require('bcrypt');
 
-//TODO add all fields required by the exam
-async function register(username, password) {
-    const existing = await getUserByUsername(username);
+
+async function register(email, password, gender) {
+    const existing = await getUserByEmail(email);
 
     if (existing){
-        throw new Error('Username is already taken');
+        throw new Error('Email is already taken');
     }
 
     const hashedPassword = await hash(password, 10);
     const user = new User({
-        username,
-        hashedPassword
+        email,
+        hashedPassword,
+        gender,
     });
 
     await user.save();
@@ -20,9 +21,9 @@ async function register(username, password) {
     return user;    
 }
 
-//TODO change identifier
-async function login(username, password){
-    const user = await getUserByUsername(username);
+
+async function login(email, password){
+    const user = await getUserByEmail(email);
 
     if (!user){
         throw new Error('User does not exist');
@@ -31,15 +32,15 @@ async function login(username, password){
     const hasMatch = await compare(password, user.hashedPassword);
 
     if (!hasMatch){
-        throw new Error('Incorrect username or password');
+        throw new Error('Incorrect email or password');
     }
 
     return user;
 }
 
-//TODO indentify user by given identifier
-async function getUserByUsername(username) {
-    const user = await User.findOne({ username: new RegExp(`^${username}$`, 'i') });
+
+async function getUserByEmail(email) {
+    const user = await User.findOne({ email: new RegExp(`^${email}$`, 'i') });
 
     return user;
 }

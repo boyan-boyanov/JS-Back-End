@@ -1,0 +1,12 @@
+1. Install all this:
+express express-handlebars bcrypt express-session mongoose nodemon
+
+2. package.json
+"scripts": {
+    "start": "nodemon index.js",
+    "debug": "index.js"
+  },
+
+
+
+  
