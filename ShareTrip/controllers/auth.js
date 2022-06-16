@@ -19,11 +19,12 @@ router.post('/register', isGuest(), async (req, res) => {
 
         const user = await register(req.body.email, req.body.password, req.body.gender);
         req.session.user = user;
-        res.redirect('/'); 
+        res.redirect('/');
 
     } catch (err) {
         console.error(err);
         const errors = mapErrors(err);
+       
         res.render('register', { title: 'Register', data: { email: req.body.email, gender: req.body.gender }, errors });
     }
 });
@@ -37,7 +38,7 @@ router.post('/login', isGuest(), async (req, res) => {
     try {
         const user = await login(req.body.email, req.body.password);
         req.session.user = user;
-        res.redirect('/'); 
+        res.redirect('/');
 
     } catch (err) {
         console.error(err);
