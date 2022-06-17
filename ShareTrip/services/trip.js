@@ -34,10 +34,15 @@ async function updateTrip(id, data) {
         await existing.save()
 }
 
+async function deleteById(id){
+    await Trip.findByIdAndDelete(id)
+}
+
 module.exports = {
     createTrip,
     getTripById,
     getAllTrips,
     getTripAndUsers,
-    updateTrip
+    updateTrip,
+    deleteById
 };

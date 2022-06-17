@@ -1,6 +1,6 @@
 const { isUser } = require('../middleware/guards');
 const preload = require('../middleware/preload');
-const { createTrip, updateTrip } = require('../services/trip');
+const { createTrip, updateTrip, deleteById } = require('../services/trip');
 const mapErrors = require('../util/mappers');
 
 const router = require('express').Router();
@@ -39,7 +39,7 @@ router.get('/edit/:id', preload(), (req, res) => {
     res.render('edit', { title: 'Edit Offer' })
 })
 
-router.post('/edit/:id', preload(),async (req, res) => {
+router.post('/edit/:id', preload(), async (req, res) => {
     const id = req.params.id
 
     const data = {
@@ -54,8 +54,8 @@ router.post('/edit/:id', preload(),async (req, res) => {
         description: req.body.description,
 
     }
-     console.log('or tripscontroler 43');
-     console.log(req.body);
+    console.log('or tripscontroler 43');
+    console.log(req.body);
     try {
         await updateTrip(id, data)
         res.redirect('/trips/' + id);
@@ -63,9 +63,14 @@ router.post('/edit/:id', preload(),async (req, res) => {
         console.error(err);
         const errors = mapErrors(err);
         data._id = id                   //catch is same for all
-        res.render('create', { data: data, errors, title: 'Create Trip Offer' })
+        res.render('edit', { data: data, errors, title: 'Create Trip Offer' })
     }
 
+})
+
+router.get('/delete/:id', preload(), async (req, res) => {
+    await deleteById(req.params.id);
+    res.redirect('/trips')
 })
 
 
