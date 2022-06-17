@@ -14,8 +14,17 @@ router.get('/trips', async (req, res) => {
 })
 
 router.get('/trips/:id', preload(true), (req, res) => {
-    if (req.session.user?._id == res.locals.data.owner._id) {
-        res.locals.data.isOwner = true
+    const data = res.locals.data
+    data.remainingSeats = data.seats - data.buddies.length
+    
+    if (req.session.user?._id == data.owner._id) {
+        data.isOwner = true
+    }
+        console.log("homecontroler");
+        console.log(data.buddies);
+        if (data.buddies.some(b => b._id == req.session.user._id)) {
+            data.isJoined = true
+        
     }
 
 

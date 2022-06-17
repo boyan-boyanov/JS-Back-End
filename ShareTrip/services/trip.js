@@ -30,12 +30,23 @@ async function updateTrip(id, data) {
         existing.seats = data.seats,
         existing.price = data.price,
         existing.description = data.description
-        
-        await existing.save()
+
+    await existing.save()
 }
 
-async function deleteById(id){
+async function deleteById(id) {
     await Trip.findByIdAndDelete(id)
+}
+
+async function joinTrip(tripId, userId) {
+    const data = await Trip.findById(tripId)
+
+    if(data.buddies.includes(userId)){
+        throw new Error('User is already part of the trip')
+    }
+
+    data.buddies.push(userId);
+    await data.save()
 }
 
 module.exports = {
@@ -44,5 +55,6 @@ module.exports = {
     getAllTrips,
     getTripAndUsers,
     updateTrip,
-    deleteById
+    deleteById,
+    joinTrip
 };
