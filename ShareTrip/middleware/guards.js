@@ -21,9 +21,10 @@ function isGuest() {
 
 function isOwner() {
     return function (req, res, next) {
+        console.log(req.session.user + "Req session");
         const userId = req.session.user?._id;
         //TODO Change propery name to match collection 
-
+//console.log(res.local.data);
         if (res.local.data.owner == userId) {
             next();
         }else {
