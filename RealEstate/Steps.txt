@@ -1,0 +1,18 @@
+1. Виж Help.txt
+
+2. виж TODO
+
+3. Login, Register, Home views
+
+4. User model
+const EMAIL_PATTERN = /^([a-zA-Z]+)@([a-zA-Z]+)\.([a-zA-Z]+)$/;
+
+5.СЪРВИСА дасе оправи според модела userService
+
+6. Модел за създаване примерно House
+
+7. Сървис според модела house
+
+8. homecontroller
+
+9. Item controler за да имаш итеми

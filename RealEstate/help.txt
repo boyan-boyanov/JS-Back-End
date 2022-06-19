@@ -1,0 +1,44 @@
+1. Install all this:
+express express-handlebars bcrypt express-session mongoose nodemon
+
+2. package.json
+"scripts": {
+    "start": "nodemon index.js",
+    "debug": "index.js"
+  },
+
+  3. for Errors
+  {{#if errors}}
+    <div class="error">
+        {{#each errors}}
+        <p>{{msg}}</p>
+        {{/each}}
+    </div>
+    {{/if}}
+
+4. LOGIN REGISTER ???
+
+ {{#if hasUser}}
+  <!-- Logged users -->
+      <li class="nav-item">
+           <a class="nav-link" href="">Offer Trip</a>
+      </li>
+      <li class="nav-item">
+           <a class="nav-link" href="">Profile</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="/">Logout as {{user.email}} </a>
+      </li>
+<!-- Guest users -->
+ {{else}}
+      <li class="nav-item">
+           <a class="nav-link" href="/login">Login</a>
+      </li>
+      <li class="nav-item">
+           <a class="nav-link" href="/register">Register</a>
+      </li>
+ {{/if}}
+
+
+
+  

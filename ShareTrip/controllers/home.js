@@ -1,7 +1,7 @@
 const preload = require('../middleware/preload');
+const router = require('express').Router();
 const { getAllTrips } = require('../services/trip');
 
-const router = require('express').Router();
 
 router.get('/', (req, res) => {
     res.render('home')
