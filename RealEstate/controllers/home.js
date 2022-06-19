@@ -51,31 +51,32 @@ router.get('/catalog/:id', preload(true), async (req, res) => {
 
 
 
-router.get('/search', async (req, res) => {
-
-    res.render('search', { title: 'Search' })
-});
 
 
 
 
 
-router.post('/search', isUser(), async (req, res) => {
-    let search = req.body.search.toLowerCase().split('');
-    search[0] = search[0].toUpperCase()
-    search = search.join('')
-    
-    
+
+router.get('/search', isUser(), async (req, res) => {
+
+    //res.render('search', { title: 'Search' })
+
     try {
-        
-        const data = {
-            isSearched: true,
-            houses: await House.find({ type: search, title: 'Search' })
+        if (req.query.search) {
+            let search = req.query.search.toLowerCase().split('');
+            search[0] = search[0].toUpperCase()
+            search = search.join('')
+            let houses = await getAllHouse(search)
+            const data = {
+                isSearched: true,
+            }
+            console.log(houses);
+            res.render('search', { title: 'Search', data, houses })
+        }else {
+            res.render('search', { title: 'Search'})
         }
-        console.log(data);
-        //console.log(houses);
-               
-        res.render('search', { title: 'Search', data })
+
+
     } catch (err) {
         console.error(err);
         const errors = mapErrors(err);                    //catch is same for all

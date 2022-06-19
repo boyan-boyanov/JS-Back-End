@@ -45,19 +45,19 @@ router.get('/edit/:id', preload(), (req, res) => {
 router.post('/edit/:id', preload(), async (req, res) => {
     const id = req.params.id
 
-    const data = {
+    /*const data = {
         name: req.body.name,
-        type: req.body.type,
+        type: req.body.type,   // same like {...req.body}
         year: req.body.year,
         city: req.body.city,
         houseImg: req.body.houseImg,
         description: req.body.description,
         pieces: Number(req.body.pieces),
-
-    }
+    }*/
     
     try {
-        await updateHouse(id, data)
+       // console.log({...req.body});
+        await updateHouse(id, {...req.body})
         res.redirect('/catalog/' + id);
     } catch (err) {
         console.error(err);

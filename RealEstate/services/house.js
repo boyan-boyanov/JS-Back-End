@@ -1,7 +1,13 @@
 const House = require('../models/House'); // change name of model
 
-async function getAllHouse() {
-    return House.find({}).lean();
+async function getAllHouse(type) {
+    if(type){
+        return await House.find({type}).lean();
+    }else {
+        return House.find({}).lean();
+    }
+    //await House.find({ type: search, title: 'Search' }).lean()
+    
 }
 
 async function getHouseById(id) {
